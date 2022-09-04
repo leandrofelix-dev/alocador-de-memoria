@@ -11,25 +11,12 @@ Modal.setAppElement('#root');
 
 export function App() {
 
-  const [isNewTransactionsModalOpen, setIsNewTransactionsModalOpen] = useState(false);
 
-  function handleOpenNewTransactionModal() {
-    setIsNewTransactionsModalOpen(true);
-  }
-
-  function handleCloseNewTransactionModal() {
-    setIsNewTransactionsModalOpen(false);
-  }
 
   return (
     <>
       <Global />
-      <Header information="Adicione, remova e visualize os discos instalados" />
-      <ListDisks onOpenNewTransactionModal={handleOpenNewTransactionModal}/>
-      <InsertDiskForm 
-      isOpen={isNewTransactionsModalOpen}
-      onRequestClose={handleCloseNewTransactionModal}
-      />
+      <Router />
     </>
 
   )

@@ -6,6 +6,9 @@ export const Container = styled.div`
     border-radius: 18px;
     color: var(--white);
 
+    a {
+        text-decoration: none;
+    }
     .content {
         padding-top: 1rem;
         display: flex;

@@ -1,13 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { App } from "../App"
 import { DiskManagement } from "../pages/disk-management"
+import Main  from "../pages/main"
 export function Router() {
     return (
-        <BrowserRouter>
         <Routes>
-            <Route path="/" element={<App />} />
+            <Route path="/" element={<Main />} />
             <Route path="/disk-management" element={<DiskManagement />} />
+            <Route path='*' element={<h1>Not Found</h1>} />
         </Routes>
-    </BrowserRouter>
     )
 }

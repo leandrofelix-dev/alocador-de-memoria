@@ -7,23 +7,36 @@ interface Props {
     onOpenNewTransactionModal: () => void;
 }
 
-export function ListDisks({onOpenNewTransactionModal}: Props) {
-    
+export function ListDisks({ onOpenNewTransactionModal }: Props) {
+
     const listDisk = [
-        {name: '', size: 0},
-        {name: '', size: 0},
+        { id: 0, name: '', size: 0 },
+        { id: 1, name: '', size: 0 },
     ]
 
     const [disks, setDisks] = useState(listDisk)
-   
+
+    function removeItem(id: number) {
+        const disk = [...disks]
+        setDisks(disk.filter(item => item.id !== id))
+        console.log(id)
+    }
+
     return (
         <Container>
             <ul>
                 {disks.map((disk, index) => (
-                    <li key={index}><Disk name={disk.name} index={index}  /></li>
+                    <li key={index}>
+                        <Disk
+                            id={disk.id}
+                            name={disk.name}
+                            index={index}
+                            removeItem={removeItem}
+                        />
+                    </li>
                 ))}
             </ul>
-        
+
             <button onClick={onOpenNewTransactionModal}>
                 <i className="uil uil-plus-circle"></i>
             </button>
