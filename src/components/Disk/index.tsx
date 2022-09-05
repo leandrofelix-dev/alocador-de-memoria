@@ -1,26 +1,30 @@
 import { Container } from "./styles";
 import disk from "../../assets/disk.png"
 import { useNavigate } from "react-router-dom";
+import { calcSpace } from "../../helpers/functions";
 
 type Props = {
     id: number
     name: string
     index: number
-    removeItem: (id: number)=> void
+    size: number,
+    removeItem: (id: number) => void
 }
 
-export function Disk({ name, index, removeItem, id }: Props) {
+export function Disk({ name, size, removeItem, id }: Props) {
 
     const navigate = useNavigate()
 
     return (
         <Container>
-                <div onClick={()=> removeItem(id)}><i className="uil uil-trash-alt"></i></div>
+                <div onClick={()=> removeItem(id)}>
+                    <i className="uil uil-trash-alt" />
+                </div>
 
                 <div className="content" onClick={()=> navigate('/disk-management')}>
-                    <h1>{id + 1/*name + ' ' + (index + 1)*/}</h1>
+                    <h1>{name}</h1>
                     <hr />
-                    <p>Disco 48% utilizado</p>
+                    <p>Disco {calcSpace(size, 0)}% ultilizado</p>
                     <img src={disk} alt="disk" />
                 </div>
         </Container>

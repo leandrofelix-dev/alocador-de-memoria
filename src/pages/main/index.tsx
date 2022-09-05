@@ -18,8 +18,8 @@ export default function Main() {
     return (
         <>
             <Header information="Adicione, remova e visualize os discos instalados" />
-            <ListDisks onOpenNewTransactionModal={handleOpenNewTransactionModal} />
-            <InsertDiskForm
+            <ListDisks 
+                onOpenNewTransactionModal={handleOpenNewTransactionModal}
                 isOpen={isNewTransactionsModalOpen}
                 onRequestClose={handleCloseNewTransactionModal}
             />

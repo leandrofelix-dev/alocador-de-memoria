@@ -1,61 +1,45 @@
 import { useState } from "react";
 import { Container } from "./styles";
 import { Disk } from "../Disk"
-
+import { InsertDiskForm } from "../InsertDiskForm";
+import { useDisk } from "../../hooks/useDisk";
 
 interface Props {
-    onOpenNewTransactionModal: () => void;
+    onOpenNewTransactionModal: () => void
+    isOpen: boolean
+    onRequestClose: () => void
 }
 
-export function ListDisks({ onOpenNewTransactionModal }: Props) {
+export function ListDisks({ onOpenNewTransactionModal, isOpen, onRequestClose }: Props) {
 
-    const listDisk = [
-        { id: 0, name: '', size: 0 },
-        { id: 1, name: '', size: 0 },
-    ]
-
-    const [disks, setDisks] = useState(listDisk)
-
-    function removeItem(id: number) {
-        const disk = [...disks]
-        setDisks(disk.filter(item => item.id !== id))
-        console.log(id)
-    }
+    const disks = useDisk()
 
     return (
         <Container>
             <ul>
-                {disks.map((disk, index) => (
+                {disks.disk.map((disk, index) => (
                     <li key={index}>
                         <Disk
                             id={disk.id}
                             name={disk.name}
                             index={index}
-                            removeItem={removeItem}
+                            size={disk.size}
+
+                            removeItem={disks.removeItem}
                         />
                     </li>
                 ))}
             </ul>
 
             <button onClick={onOpenNewTransactionModal}>
-                <i className="uil uil-plus-circle"></i>
+                <i className="uil uil-plus-circle" ></i>
             </button>
+
+            <InsertDiskForm
+                isOpen={isOpen}
+                onRequestClose={onRequestClose}
+                newDisk={disks.createNewDisk}
+            />
         </Container>
     )
 }
-
-
-
-/*
-const defaultList = [
-    { name: "ItemOne" },
-    { name: "ItemTwo" },
-    { name: "ItemThree" }
-  ];
-
-  const [list, updateList] = useState(defaultList);
-
-  const handleRemoveItem = (e) => {
-   const name = e.target.getAttribute("name")
-    updateList(list.filter(item => item.name !== name));
-  };*/
