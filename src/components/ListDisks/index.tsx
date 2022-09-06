@@ -31,7 +31,7 @@ export function ListDisks({ onOpenNewTransactionModal, isOpen, onRequestClose }:
                 ))}
             </ul>
 
-            <button onClick={onOpenNewTransactionModal}>
+            <button className="insertButton" onClick={onOpenNewTransactionModal}>
                 <i className="uil uil-plus-circle" ></i>
             </button>
 

@@ -15,9 +15,11 @@ export function Disk({ name, size, removeItem, id }: Props) {
 
     const navigate = useNavigate()
 
+    
+
     return (
         <Container>
-                <div onClick={()=> removeItem(id)}>
+                <div className="buttonTrash"onClick={()=> removeItem(id)}>
                     <i className="uil uil-trash-alt" />
                 </div>
 

@@ -24,46 +24,50 @@ export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
         >
             <Container>
                 <div className="formPopUp">
-                    <div className="left">
-                        <h1>Disco 01</h1>
-                        <img src={disk} alt="IMAGEM" />
-                    </div>
+                    <div className="formPopUp__box">
+                        <div className="left">
+                            <h1>Disco 01</h1>
+                            <img src={disk} alt="IMAGEM" />
+                        </div>
 
-                    <div className="separator" />
+                        <div className="separator" />
 
-                    <div className="right">
-                        <div className="right__leftLine" />
-                        <h1>Criar disco</h1>
-                        <label htmlFor="nameStorage">Nome</label>
-                        <input
-                            type="text"
-                            name="nameStorage"
-                            id="nameStorage"
-                            placeholder="Inserir nome"
-                            className="inputText"
+                        <div className="right">
+                            <div className="right__leftLine" />
+                            <h1>Criar disco</h1>
+                            {/* <label htmlFor="nameStorage">Nome</label> */}
+                            <input
+                                type="text"
+                                name="nameStorage"
+                                id="nameStorage"
+                                placeholder="Inserir nome"
+                                className="inputText"
 
-                            onChange={e => setName(e.target.value)}
-                        />
+                                onChange={e => setName(e.target.value)}
+                            />
 
-                        <br />
+                            <br />
 
-                        <label htmlFor="sizeStorage">Tamanho</label>
-                        <input
-                            type="text"
-                            name="sizeStorage"
-                            id="sizeStorage"
-                            placeholder="Inserir tamanho"
-                            className="inputText"
+                            {/* <label htmlFor="sizeStorage">Tamanho</label> */}
+                            <input
+                                type="text"
+                                name="sizeStorage"
+                                id="sizeStorage"
+                                placeholder="Inserir tamanho"
+                                className="inputText"
 
-                            onChange={e => setSize(parseInt(e.target.value))}
-                        />
+                                onChange={e => setSize(parseInt(e.target.value))}
+                            />
 
-                        <div className="sendButton" onClick={() => newDisk({ id: 3, name, size })}>
-                            <i className="uil uil-save"></i>
-                            Criar
+                            <div className="sendButton" onClick={() => newDisk({ id: 3, name, size, archives: []})}>
+                                <i className="uil uil-save"></i>
+                                Criar
+                            </div>
                         </div>
                     </div>
-                    <i className="uil uil-times" onClick={onRequestClose}></i>
+                    <div className="formPopUp__closeButton">
+                        <i className="uil uil-times" onClick={onRequestClose}></i>
+                    </div>
                 </div>
             </Container >
         </Modal>

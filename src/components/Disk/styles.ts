@@ -24,4 +24,22 @@ export const Container = styled.div`
     .content>img{
         width: 80%;
     }
+    
+    .buttonTrash{
+        background: transparent;
+        font-size: 1.25rem;
+        border: 0;
+        color: var(--white);
+        display: block;
+        justify-content:end;
+        text-align: end;
+        padding: 2px;
+
+        line-height: 0;
+        border-radius: 2px;
+    }
+
+    .buttonTrash:hover{
+        color: var(--red-500);
+    }
 `
