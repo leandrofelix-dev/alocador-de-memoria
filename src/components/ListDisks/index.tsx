@@ -24,16 +24,16 @@ export function ListDisks({ onOpenNewTransactionModal, isOpen, onRequestClose }:
                             name={disk.name}
                             index={index}
                             size={disk.size}
-
                             removeItem={disks.removeItem}
                         />
                     </li>
                 ))}
+                <li className="insertButtonBox">
+                    <button className="insertButton" onClick={onOpenNewTransactionModal}>
+                        <i className="uil uil-plus-circle" ></i>
+                    </button>
+                </li>
             </ul>
-
-            <button className="insertButton" onClick={onOpenNewTransactionModal}>
-                <i className="uil uil-plus-circle" ></i>
-            </button>
 
             <InsertDiskForm
                 isOpen={isOpen}

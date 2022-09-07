@@ -22,6 +22,7 @@ export function useDisk() {
             setDisk(newDisk)
         
         localStorage.setItem(uuidv4(), JSON.stringify(item))
+
         }
         else{
             alert('erro');

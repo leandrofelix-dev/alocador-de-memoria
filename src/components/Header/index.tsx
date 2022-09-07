@@ -7,9 +7,11 @@ interface Props {
 export function Header({information}: Props){
     return (
         <Container>
-            <h1>Gerenciador de Discos</h1>
-            <p>{information}</p>
-            <hr />
+            <div className="box">
+                <h1>Gerenciador de Discos</h1>
+                <p>{information}</p>
+                <hr />
+            </div>
         </Container>
     )
 }

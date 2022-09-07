@@ -19,6 +19,17 @@ export const Container = styled.header`
         font-weight: 400;
         font-size: 0.75rem;
     }
+    hr{
+       width: 60vw;
+    }
+    .box{
+        /* background: red; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem 0;
+    }
 
     
 

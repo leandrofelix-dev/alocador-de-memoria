@@ -35,7 +35,7 @@ export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
                         <div className="right">
                             <div className="right__leftLine" />
                             <h1>Criar disco</h1>
-                            {/* <label htmlFor="nameStorage">Nome</label> */}
+                            
                             <input
                                 type="text"
                                 name="nameStorage"
@@ -47,10 +47,8 @@ export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
                             />
 
                             <br />
-
-                            {/* <label htmlFor="sizeStorage">Tamanho</label> */}
                             <input
-                                type="text"
+                                type="number"
                                 name="sizeStorage"
                                 id="sizeStorage"
                                 placeholder="Inserir tamanho"
@@ -58,7 +56,52 @@ export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
 
                                 onChange={e => setSize(parseInt(e.target.value))}
                             />
+                            
+                            {/* CheckBox */}
 
+                            <div className="checkbox">
+                            <div className="contigua">
+                                <input
+                                    type = "checkbox"
+                                    id = "inputContigua"
+                                    name = "contigua"
+                                    value = "c"
+                                />
+                                <label 
+                                    htmlFor="contigua"> 
+                                    Alocação <b>Contígua</b>
+                                </ label>
+                            </div>
+
+                            <div className="indexada">
+                                <input
+                                    type = "checkbox"
+                                    id = "inputIndexada"
+                                    name = "indexada"
+                                    value = "i"
+                                />
+                                <label 
+                                    htmlFor="indexada"> 
+                                    Alocação <b>Indexada</b>
+                                </ label>
+                            </div>
+
+                            <div className="encadeada">
+                                <input
+                                    type = "checkbox"
+                                    id = "inputEncadeada"
+                                    name = "encadeada"
+                                    value = "e"
+                                />
+                                <label 
+                                    htmlFor="encadeada"> 
+                                    Alocação <b>Encadeada</b>
+                                </ label>
+                            </div>
+                            </div>
+
+
+                            {/*  */}
                             <div className="sendButton" onClick={() => newDisk({ id: 3, name, size, archives: []})}>
                                 <i className="uil uil-save"></i>
                                 Criar

@@ -35,12 +35,12 @@ h1{
     text-align: center
 }
 .formPopUp{
-        padding: 1.2rem;
-        background: var(--gray-400);
-        border-radius: 8px;
-        display: flex;
-        color: var(--white);
-        transition: all .3s;
+    padding: 1.2rem;
+    background: var(--gray-400);
+    border-radius: 8px;
+    display: flex;
+    color: var(--white);
+    transition: all .3s;
 }
 .formPopUp__closeButton{
     /* background: red; */
@@ -98,6 +98,38 @@ h1{
 }
 .sendButton>i{
     font-size: 22px;
+}
+input[type="checkbox"]{
+    all: unset;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 4px;
+    background: var(--gray-800);
+    border: 2px solid var(--gray-600);
+    margin: .2rem .4rem;
+}
+input:checked{
+    background-color: var(--purple);
+    width: 20px;
+    height: 20px;
+    border-color: var(--gray-800);
+}
+.contigua,
+.indexada,
+.encadeada{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    /* background: green; */
+    width: 100%;
+}
+.checkbox{
+    margin: 1rem 0;
+    /* background: blue; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 `

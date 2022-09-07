@@ -15,8 +15,6 @@ export function Disk({ name, size, removeItem, id }: Props) {
 
     const navigate = useNavigate()
 
-    
-
     return (
         <Container>
                 <div className="buttonTrash"onClick={()=> removeItem(id)}>

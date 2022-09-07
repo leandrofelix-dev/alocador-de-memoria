@@ -4,7 +4,9 @@ type Disk = {
     size: number
 }
 export const disks: Disk[] = [
-    {id: 1, name: 'Disk 2', size: 50}
+    {id: 1, name: 'Contígua', size: 256},
+    {id: 1, name: 'Encadeada', size: 256},
+    {id: 1, name: 'Alocação', size: 256}
 ]
 
 
