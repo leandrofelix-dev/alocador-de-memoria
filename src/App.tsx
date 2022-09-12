@@ -1,22 +1,21 @@
-import { ListDisks } from "./components/ListDisks";
-import { Header } from "./components/Header";
-import { Global } from "./styles/global";
 import Modal from 'react-modal';
-import { useState } from "react";
-import { InsertDiskForm } from "./components/InsertDiskForm";
+import { Global } from "./styles/global";
 import { Router } from "./router/router";
-
+import { FilesPage} from "./components/FilesPage";
+import { Header } from "./components/Header";
+import { ListDisks } from "./components/ListDisks";
+import { InsertDiskForm } from "./components/InsertDiskForm";
+import { useState } from "react";
 
 Modal.setAppElement('#root');
 
 export function App() {
-
-
-
   return (
     <>
-      <Global />
       <Router />
+      <Global />
+      {/* <Header information = {'As unidades de memória coloridas estão alocados'} /> */}
+      {/* <FilesPage /> */}
     </>
 
   )

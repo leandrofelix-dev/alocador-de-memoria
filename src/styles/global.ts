@@ -6,16 +6,15 @@ export const Global = createGlobalStyle`
 :root {
     --white: #FDFDFD;
     --gray-200: #8d8d99;
-    --gray-400: #202024;
     --gray-600: #34343a;
+    --gray-400: #202024;
     --gray-700: #121214;
-
+    --gray-740: #121214;
+    --gray-800: #0a0a0c;
+    --gray-900: #000000;
     --purple: #6833E4;
-
     --green: #00875f;
-
     --green-storage: #04D361;
-    
     --red-500: #F75A68;
 }
 

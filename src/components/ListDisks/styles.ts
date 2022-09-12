@@ -10,6 +10,7 @@ export const Container = styled.div`
     ul {
         flex-direction: row;
         max-width: 100vw;
+        justify-content: center;
     }
 
     li {

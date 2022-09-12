@@ -7,13 +7,16 @@ import { Disk, useDisk } from "../../hooks/useDisk"
 interface Props {
     isOpen: boolean
     onRequestClose: () => void
-    newDisk: (item: Disk) => void
+    newDisk?: (item: Disk) => void
 }
 
 export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
 
     const [name, setName] = useState('')
     const [size, setSize] = useState(0)
+    const [typeDisk, setTypeDisk] = useState('')
+
+    const hookDisks = useDisk()
 
     return (
         <Modal
@@ -35,7 +38,7 @@ export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
                         <div className="right">
                             <div className="right__leftLine" />
                             <h1>Criar disco</h1>
-                            
+
                             <input
                                 type="text"
                                 name="nameStorage"
@@ -56,53 +59,57 @@ export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
 
                                 onChange={e => setSize(parseInt(e.target.value))}
                             />
-                            
+
                             {/* CheckBox */}
 
                             <div className="checkbox">
-                            <div className="contigua">
-                                <input
-                                    type = "checkbox"
-                                    id = "inputContigua"
-                                    name = "contigua"
-                                    value = "c"
-                                />
-                                <label 
-                                    htmlFor="contigua"> 
-                                    Alocação <b>Contígua</b>
-                                </ label>
-                            </div>
-
-                            <div className="indexada">
-                                <input
-                                    type = "checkbox"
-                                    id = "inputIndexada"
-                                    name = "indexada"
-                                    value = "i"
-                                />
-                                <label 
-                                    htmlFor="indexada"> 
-                                    Alocação <b>Indexada</b>
-                                </ label>
-                            </div>
-
-                            <div className="encadeada">
-                                <input
-                                    type = "checkbox"
-                                    id = "inputEncadeada"
-                                    name = "encadeada"
-                                    value = "e"
-                                />
-                                <label 
-                                    htmlFor="encadeada"> 
-                                    Alocação <b>Encadeada</b>
-                                </ label>
-                            </div>
+                                <div className="contigua">
+                                    <form action="">
+                                        <div className="contigua">
+                                            <input type="radio"
+                                                id="contigua"
+                                                name="storageType"
+                                                value="c"
+                                                onChange={e => setTypeDisk(e.target.value)}
+                                            />
+                                        <label
+                                            htmlFor="contigua">
+                                            Alocação <b>Contígua</b>
+                                        </ label>
+                                        </div>
+                                        <div className="indexada">
+                                            <input
+                                                type="radio"
+                                                id="indexada"
+                                                name="storageType"
+                                                value="i"
+                                                onChange={e => setTypeDisk(e.target.value)}
+                                            />
+                                            <label
+                                                htmlFor="indexada">
+                                                Alocação <b>Indexada</b>
+                                            </ label>
+                                        </div>
+                                        <div className="encadeada">
+                                            <input
+                                                type="radio"
+                                                id="encadeada"
+                                                name="storageType"
+                                                value="e"
+                                                onChange={e => setTypeDisk(e.target.value)}
+                                            />
+                                            <label
+                                                htmlFor="encadeada">
+                                                Alocação <b>Encadeada</b>
+                                            </ label>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
 
 
                             {/*  */}
-                            <div className="sendButton" onClick={() => newDisk({ id: 3, name, size, archives: []})}>
+                            <div className="sendButton" onClick={() => hookDisks.createDisk(typeDisk)}>
                                 <i className="uil uil-save"></i>
                                 Criar
                             </div>

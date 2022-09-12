@@ -47,6 +47,7 @@ h1{
 }
 .formPopUp__box{
     display: flex;
+    align-items: center;
 }
 .left{
     /* background: purple; */
@@ -73,7 +74,7 @@ h1{
 
 .separator{
     width: 2px;
-    height: 43vh;
+    height: 90%;
     background-color: #2D2D2D;
     margin: 0 1rem;
 }
@@ -99,20 +100,21 @@ h1{
 .sendButton>i{
     font-size: 22px;
 }
-input[type="checkbox"]{
+input[type="radio"]{
     all: unset;
     width: 20px;
     height: 20px;
     display: inline-block;
     border-radius: 4px;
     background: var(--gray-800);
-    border: 2px solid var(--gray-600);
+    border: 2px solid var(--gray-400);
     margin: .2rem .4rem;
 }
 input:checked{
     background-color: var(--purple);
-    width: 20px;
-    height: 20px;
+    background-image: url("../../assets/images/checked.png");
+    width: 18px;
+    height: 18px;
     border-color: var(--gray-800);
 }
 .contigua,
