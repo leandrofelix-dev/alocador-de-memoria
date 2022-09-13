@@ -21,21 +21,22 @@ export function FilesPage({ name }: Props) {
 
     useEffect(() => {
         const diskFind = disks.find(disk => disk.id === id) as IDisksProps
-        // const sum = diskFind.files.reduce((a, b) => a + b, 0)
+        const sum = diskFind.files.reduce((a, b) => (a + b.size), 0)
 
         setDisk(disks.find(disk => disk.id === id) || {} as IDisksProps)
-        // setPercentageDisk(Math.trunc((100 / diskFind.size) * sum))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        setPercentageDisk(Math.trunc((100 / diskFind.size) * sum))
+
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 
     const handleFile = (e: FileList | null) => {
 
         const fileSize = e![0].size / 1000000
 
-        // const sum = Math.trunc(disk.files.reduce((a, b) => a + b, 0) + fileSize)
-        // if (sum > 256) return alert('Espaço em disco insuficiente!')
+        const sum = Math.trunc(disk.files.reduce((a, b) => (a + b.size), 0) + fileSize)
+        if (sum >= disk.size) return alert('Disco cheio')
 
-        // setPercentageDisk(Math.trunc((100 / disk.size) * sum))
+        setPercentageDisk(Math.trunc((100 / disk.size) * sum))
 
         const id = uuid()
 
@@ -71,6 +72,13 @@ export function FilesPage({ name }: Props) {
             })
         })
     }
+    const espacoPreenchido = disk.files ? disk.files.map(file => ({
+        size:Array(file.size),
+        id:file.id,
+        active:file.active ? 'storageUnity active' : 'storageUnity' 
+    })) : []
+
+    console.log(espacoPreenchido)
 
     return (
         <Container>
@@ -97,8 +105,17 @@ export function FilesPage({ name }: Props) {
                 <div className="right">
 
                     <ul className="storage">
-                        {!!disk.files && disk.files.map(file => Array(file.size).fill(<li className={file.active ? 'storageUnity active' : 'storageUnity'} onClick={() => removeFile(file.id)} />))}
-                        {Array(!!disk.files ? Math.trunc(disk.size) : 0).fill(<li className="storageUnity" />)}
+                        <>
+                            {espacoPreenchido && espacoPreenchido.map((file) => (
+                                <>
+                                    {file.size.map(() => (
+                                        <li key={uuid()} className={file.active} onClick={() => removeFile(file.id)} />
+                                    ))}
+                                </>
+                            ))}
+                            {Array(!!disk.files ? Math.trunc(disk.size) : 0)
+                                .fill(<li className="storageUnity" />)}
+                        </>
                     </ul>
 
                 </div>
