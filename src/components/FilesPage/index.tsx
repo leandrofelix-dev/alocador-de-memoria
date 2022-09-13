@@ -73,26 +73,24 @@ export function FilesPage({ name }: Props) {
         })
     }
     const espacoPreenchido = disk.files ? disk.files.map(file => ({
-        size:Array(file.size),
-        id:file.id,
-        active:file.active ? 'storageUnity active' : 'storageUnity' 
+        size: Array(file.size),
+        id: file.id,
+        active: file.active ? 'storageUnity active' : 'storageUnity' 
     })) : []
-
-    console.log(espacoPreenchido)
+    const buzySpaces = espacoPreenchido.reduce((acc, espaco) => acc + espaco.size.length, 0)
+    const espacoEmBranco = disk.files ? new Array(Math.trunc(disk.size - buzySpaces)) : []
 
     return (
         <Container>
-            {/* <button onClick={() => console.log(disks)}>teste</button> */}
-            
-                    <div className="inputFile">
-                        <i className="uil uil-file-upload-alt"></i>
-                        <input 
-                            type="file"
-                            id="uploadFile"
-                            placeholder="TESTE"
-                            onChange={(e) => handleFile(e.target.files)}
-                        />
-                    </div>
+                <div className="inputFile">
+                    <i className="uil uil-file-upload-alt"></i>
+                    <input 
+                        type="file"
+                        id="uploadFile"
+                        placeholder="TESTE"
+                        onChange={(e) => handleFile(e.target.files)}
+                    />
+                </div>
             
             <div className="filesPage">
                 <div className="left">
@@ -106,15 +104,17 @@ export function FilesPage({ name }: Props) {
 
                     <ul className="storage">
                         <>
-                            {espacoPreenchido && espacoPreenchido.map((file) => (
+                            {espacoPreenchido.map((file) => (
                                 <>
-                                    {file.size.map(() => (
-                                        <li key={uuid()} className={file.active} onClick={() => removeFile(file.id)} />
+                                    {[...file.size].map(() => (
+                                        <li key={uuid()} className={file.active} onClick={() => removeFile(file.id)}>&nbsp;</li>
                                     ))}
                                 </>
                             ))}
-                            {Array(!!disk.files ? Math.trunc(disk.size) : 0)
-                                .fill(<li className="storageUnity" />)}
+                            {[...espacoEmBranco].map((_, index) => (
+                                    <li className="storageUnity" key={uuid()}>&nbsp;</li>
+                                )
+                            )}
                         </>
                     </ul>
 
