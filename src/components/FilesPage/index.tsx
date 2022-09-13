@@ -9,7 +9,6 @@ type Props = {
     name: string
 }
 
-
 export function FilesPage({ name }: Props) {
     const { id } = useParams()
 
@@ -42,10 +41,38 @@ export function FilesPage({ name }: Props) {
 
         const size = Math.trunc(fileSize)
 
+        /*if(disks.length < 1) {
+            setDisk({
+                ...disk,
+                files: [...disk.files, { size, id, active: true }]
+            })
+        }*/
+/*
+        for (let i = 0; i < disks.length; i++) {
+
+            if (disks.find(disk => disk.files[i].active === false)) {
+
+                setDisks(prevState =>
+                    prevState.map(prev => {
+                        if (prev.id === disk.id) {
+                            return { ...prev, files: [...disk.files, { size, id, active: true }] };
+                        }
+                        return prev;
+                    }),
+                );
+            }
+        }
+*/
+
+        //console.log(disk.files[0].active)
+
+
         setDisk({
             ...disk,
             files: [...disk.files, { size, id, active: true }]
         })
+
+
 
         setDisks(prevState =>
             prevState.map(prev => {
@@ -75,13 +102,29 @@ export function FilesPage({ name }: Props) {
     const espacoPreenchido = disk.files ? disk.files.map(file => ({
         size: Array(file.size),
         id: file.id,
+<<<<<<< HEAD
+        active: file.active ? 'storageUnity active' : 'storageUnity'
+=======
         active: file.active ? 'storageUnity active' : 'storageUnity' 
+>>>>>>> ff7d1ef206e2296a1e0eb29a11dca17eaf51ed45
     })) : []
     const buzySpaces = espacoPreenchido.reduce((acc, espaco) => acc + espaco.size.length, 0)
     const espacoEmBranco = disk.files ? new Array(Math.trunc(disk.size - buzySpaces)) : []
 
     return (
         <Container>
+<<<<<<< HEAD
+            <div className="inputFile">
+                <i className="uil uil-file-upload-alt"></i>
+                <input
+                    type="file"
+                    id="uploadFile"
+                    placeholder="TESTE"
+                    onChange={(e) => handleFile(e.target.files)}
+                />
+            </div>
+
+=======
                 <div className="inputFile">
                     <i className="uil uil-file-upload-alt"></i>
                     <input 
@@ -92,6 +135,7 @@ export function FilesPage({ name }: Props) {
                     />
                 </div>
             
+>>>>>>> ff7d1ef206e2296a1e0eb29a11dca17eaf51ed45
             <div className="filesPage">
                 <div className="left">
                     <h1>{disk.name}</h1>
@@ -112,8 +156,13 @@ export function FilesPage({ name }: Props) {
                                 </>
                             ))}
                             {[...espacoEmBranco].map((_, index) => (
+<<<<<<< HEAD
+                                <li className="storageUnity" key={uuid()}>&nbsp;</li>
+                            )
+=======
                                     <li className="storageUnity" key={uuid()}>&nbsp;</li>
                                 )
+>>>>>>> ff7d1ef206e2296a1e0eb29a11dca17eaf51ed45
                             )}
                         </>
                     </ul>
@@ -123,3 +172,10 @@ export function FilesPage({ name }: Props) {
         </Container>
     )
 }
+// const inventory = [
+//     {name: 'apples', quantity: 2},
+//     {name: 'bananas', quantity: 0},
+//     {name: 'cerejas', quantity: 5}
+// ];
+
+
