@@ -4,7 +4,6 @@ import { InsertDiskForm } from "../../components/InsertDiskForm";
 import { ListDisks } from "../../components/ListDisks";
 
 export default function Main() {
-
     const [isNewTransactionsModalOpen, setIsNewTransactionsModalOpen] = useState(false);
 
     function handleOpenNewTransactionModal() {
@@ -18,7 +17,7 @@ export default function Main() {
     return (
         <>
             <Header information="Adicione, remova e visualize os discos instalados" />
-            <ListDisks 
+            <ListDisks
                 onOpenNewTransactionModal={handleOpenNewTransactionModal}
                 isOpen={isNewTransactionsModalOpen}
                 onRequestClose={handleCloseNewTransactionModal}

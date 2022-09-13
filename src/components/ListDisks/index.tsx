@@ -6,6 +6,7 @@ import { disks as dataDisks } from "../../data/disks"
 import { Encadeada } from "../Disks/Encadeada"
 import { Indexada } from "../Disks/Indexada"
 import { Contigua } from "../Disks/Contigua"
+import { useDisks } from "../../hooks/useDisks"
 interface Props {
     onOpenNewTransactionModal: () => void
     isOpen: boolean
@@ -13,31 +14,12 @@ interface Props {
 }
 
 export function ListDisks({ onOpenNewTransactionModal, isOpen, onRequestClose }: Props) {
-
     const hookDisks = useDisk()
-
-  
-
+    const { disks } = useDisks()
     return (
         <Container>
             <ul>
-                {/*hookDisks.disk.map((disk, index) => (
-                    <li key={index}>
-                        <Contigua
-                            id={disk.id}
-                            name={disk.name}
-                            index={index}
-                            size={disk.size}
-                            display={hookDisks.typeDisk}
-                        />
-                        <Encadeada name={encadeada.name} display={hookDisks.typeDisk} />
-                        <Indexada name={indexada.name} display={hookDisks.typeDisk} />
-                    </li>
-                ))*/}
-                <li><Contigua name={hookDisks.contigua.name} display={hookDisks.typeDisk} /></li>
-                <li><Encadeada name={hookDisks.encadeada.name} display={hookDisks.typeDisk} /></li>
-                <li><Indexada name={hookDisks.indexada.name} display={hookDisks.typeDisk} /></li>
-
+                {disks.length ? disks.map(disk => <li><Indexada name={hookDisks.indexada.name} display={hookDisks.typeDisk} data={disk} /></li>) : null}
 
                 <li className="insertButtonBox">
                     <button className="insertButton" onClick={onOpenNewTransactionModal}>

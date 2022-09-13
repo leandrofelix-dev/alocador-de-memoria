@@ -33,7 +33,7 @@ body{
 hr{
   border: 1px solid var(--purple);
 }
-.react-modal-overlay { //Fora do modal
+.react-modal-overlay {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -45,7 +45,7 @@ hr{
     justify-content: center;
   }
   
-  .react-modal-content { //Modal
+  .react-modal-content {
     width: 100%;
     max-width: 80%;
     background: var(--background);
@@ -55,6 +55,15 @@ hr{
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .backButton{
+    background: none;
+    border: none;
+      .uil-arrow-left{
+        color: var(--gray-200);
+        font-size: 3rem;
+
+      }
   }
 `
 

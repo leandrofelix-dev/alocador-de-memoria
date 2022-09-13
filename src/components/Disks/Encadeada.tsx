@@ -18,16 +18,16 @@ export function Encadeada({ name, size, removeItem, id, display }: Props) {
 
     return (
         <Container display={display}>
-                <div className="buttonTrash">
-                    <i className="uil uil-trash-alt" />
-                </div>
+            <div className="buttonTrash">
+                <i className="uil uil-trash-alt" />
+            </div>
 
-                <div className="content" onClick={()=> navigate('/encadeada')}>
-                    <h1>{name}</h1>
-                    <hr />
-                    <p>Disco {}% ultilizado</p>
-                    <img src={disk} alt="disk" />
-                </div>
+            <div className="content" onClick={() => navigate('/encadeada')}>
+                <h1>{name}</h1>
+                <hr />
+                <p>Disco { }% ultilizado</p>
+                <img src={disk} alt="disk" />
+            </div>
         </Container>
     )
 }

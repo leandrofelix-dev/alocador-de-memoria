@@ -10,7 +10,7 @@ export function Contigua() {
     return (
         <>
         <Header information="As unidades de memória em verde estão alocados"/>
-        <button><Link to={'/'}>Voltar</Link></button>
+        <button><Link to={'/'}>AAAA</Link></button>
 
         <FilesPage name={hookDisks.contigua.name} />
         

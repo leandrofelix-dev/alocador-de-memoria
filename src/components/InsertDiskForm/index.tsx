@@ -3,6 +3,9 @@ import { Container } from "./styles"
 import Modal from 'react-modal'
 import disk from "../../assets/disk.png"
 import { Disk, useDisk } from "../../hooks/useDisk"
+import { useDisks } from "../../hooks/useDisks"
+
+import { v4 as uuid } from 'uuid'
 
 interface Props {
     isOpen: boolean
@@ -11,17 +14,27 @@ interface Props {
 }
 
 export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
-
+    const { setDisks, disks } = useDisks()
     const [name, setName] = useState('')
     const [size, setSize] = useState(0)
-    const [typeDisk, setTypeDisk] = useState('')
+    const [typeDisk, setTypeDisk] = useState<'contigua' | 'encadeada' | 'indexada'>('contigua')
 
-    const hookDisks = useDisk()
+    const handleCreateDisk = () => {
+        onRequestClose()
+
+        setDisks([...disks, {
+            id: uuid(),
+            files: [],
+            name,
+            size,
+            type: typeDisk
+        }])
+    }
 
     return (
         <Modal
             isOpen={isOpen}
-            onRequestClose={onRequestClose}
+            onRequestClose={() => !isOpen}
             overlayClassName="react-modal-overlay"
             className="react-modal-content"
         >
@@ -69,21 +82,21 @@ export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
                                             <input type="radio"
                                                 id="contigua"
                                                 name="storageType"
-                                                value="c"
-                                                onChange={e => setTypeDisk(e.target.value)}
+                                                value={typeDisk}
+                                                onChange={() => setTypeDisk('contigua')}
                                             />
-                                        <label
-                                            htmlFor="contigua">
-                                            Alocação <b>Contígua</b>
-                                        </ label>
+                                            <label
+                                                htmlFor="contigua">
+                                                Alocação <b>Contígua</b>
+                                            </ label>
                                         </div>
                                         <div className="indexada">
                                             <input
                                                 type="radio"
                                                 id="indexada"
                                                 name="storageType"
-                                                value="i"
-                                                onChange={e => setTypeDisk(e.target.value)}
+                                                value={typeDisk}
+                                                onChange={() => setTypeDisk('indexada')}
                                             />
                                             <label
                                                 htmlFor="indexada">
@@ -95,8 +108,8 @@ export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
                                                 type="radio"
                                                 id="encadeada"
                                                 name="storageType"
-                                                value="e"
-                                                onChange={e => setTypeDisk(e.target.value)}
+                                                value={typeDisk}
+                                                onChange={() => setTypeDisk('encadeada')}
                                             />
                                             <label
                                                 htmlFor="encadeada">
@@ -109,7 +122,7 @@ export function InsertDiskForm({ isOpen, onRequestClose, newDisk }: Props) {
 
 
                             {/*  */}
-                            <div className="sendButton" onClick={() => hookDisks.createDisk(typeDisk)}>
+                            <div className="sendButton" onClick={handleCreateDisk}>
                                 <i className="uil uil-save"></i>
                                 Criar
                             </div>

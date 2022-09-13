@@ -10,7 +10,7 @@ export function Indexada() {
     return (
         <>
         <Header information="As unidades de memória em verde estão alocados"/>
-        <button><Link to={'/'}>Voltar</Link></button>
+        <button className="backButton"><Link to={'/'}><i className="uil uil-arrow-left"></i></Link></button>
 
         <FilesPage name={hookDisks.indexada.name} />
         

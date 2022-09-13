@@ -9,7 +9,7 @@ export function Encadeada() {
 
     return (
         <>
-        <Header information="As unidades de memória em verde estão alocados"/>
+        <Header information="As unidades de memória em verde estão alocados. Clique"/>
         <button><Link to={'/'}>Voltar</Link></button>
 
         <FilesPage name={hookDisks.encadeada.name} />
